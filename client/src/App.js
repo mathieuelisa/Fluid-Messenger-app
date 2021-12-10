@@ -3,7 +3,7 @@ import { StreamChat } from "stream-chat";
 import { Chat, Channel, ChannelList } from "stream-chat-react";
 import "stream-chat-css/dist/css/index.css";
 import "./app.css";
-import Auth from "./Components/Authentification/Authentification";
+import Authentification from "./Components/Authentification/Authentification";
 import MessagesContainer from "./Components/MessagesContainer/MessagesContainer";
 
 const filters = { type: "messaging" };
@@ -45,11 +45,11 @@ function App() {
 
   if (!clientReady) return null;
 
-  let auth = true;
+  let auth = false;
   return (
     <>
       {!auth ? (
-        <Auth />
+        <Authentification />
       ) : (
         <Chat client={client} darkMode={true}>
           <ChannelList filters={filters} sort={sort} options={options} />
