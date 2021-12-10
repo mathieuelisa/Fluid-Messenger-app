@@ -1,0 +1,72 @@
+.auth__container {
+  background-color: rgb(34, 34, 34);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.auth__container-label {
+  display: flex;
+  flex-direction: column;
+  color: whitesmoke;
+  font-family: arial;
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+.auth__container-inputContainer {
+  display: flex;
+}
+
+.auth__container-input {
+  margin-top: 5px;
+  width: 100%;
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid rgb(52, 52, 52);
+  color: whitesmoke;
+}
+
+.auth__container-input:focus {
+  outline: none;
+}
+
+.auth__container-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+}
+
+.auth__container-buttons {
+  display: flex;
+}
+
+.button-signup,
+.button-login {
+  border: none;
+  background-color: transparent;
+  margin: 5px;
+  cursor: pointer;
+  color: grey;
+}
+
+.button-validate {
+  width: 150px;
+  margin: 20px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 20px;
+  transition: 1s;
+}
+
+.button-validate:hover {
+  background-color: rgb(189, 189, 189);
+}
+
+.auth__container-passwordVisibility {
+  height: 20px;
+}

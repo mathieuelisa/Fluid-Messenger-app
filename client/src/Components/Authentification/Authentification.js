@@ -1,9 +1,16 @@
 import { useState } from "react";
+import "./styles.css";
+
+import visibilityPassword from "../../Assets/witness.png";
+import noVisibilityPassword from "../../Assets/hidden.png";
 
 function Authentification() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoging, setIsLoging] = useState(true);
+  const [showPassword, setShowPassword] = useState(true);
+  const [showVisibilityPassword, noShowVisibilityPassword] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,37 +22,92 @@ function Authentification() {
     console.log(confirmPassword);
   };
 
+  const passwordVisibility = () => {
+    setShowPassword((showPassword) => !showPassword);
+    noShowVisibilityPassword(
+      (showVisibilityPassword) => !showVisibilityPassword
+    );
+  };
+
+  let pipo = false;
+
   return (
     <div className="auth__container">
       <form className="auth__container-form" onSubmit={handleSubmit}>
-        <label>
+        <label className="auth__container-label">
           Username
           <input
             type="text"
             value={userName}
+            className="auth__container-input"
             onChange={(e) => setUserName(e.target.value)}
           />
         </label>
 
-        <label>
+        <label className="auth__container-label">
           Password
-          <input
-            type="text"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="auth__container-inputContainer">
+            <input
+              type={showPassword ? "password" : "text"}
+              value={password}
+              className="auth__container-input"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <img
+              src={
+                !showVisibilityPassword
+                  ? noVisibilityPassword
+                  : visibilityPassword
+              }
+              className="auth__container-passwordVisibility"
+              onClick={passwordVisibility}
+            />
+          </div>
         </label>
 
-        <label>
-          Confirm password
-          <input
-            type="text"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </label>
-        <button type="submit">Go</button>
+        {!isLoging && (
+          <label className="auth__container-label">
+            Confirm password
+            <div className="auth__container-inputContainer">
+              <input
+                type={showPassword ? "password" : "text"}
+                value={confirmPassword}
+                className="auth__container-input"
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <img
+                src={
+                  showVisibilityPassword
+                    ? visibilityPassword
+                    : noVisibilityPassword
+                }
+                className="auth__container-passwordVisibility"
+                onClick={passwordVisibility}
+              />
+            </div>
+          </label>
+        )}
+
+        <button type="submit" className="button-validate">
+          NEXT
+        </button>
       </form>
+      <div className="auth__container-buttons">
+        <button
+          onClick={() => setIsLoging(true)}
+          className="button-login"
+          style={{ color: !isLoging ? "" : "white" }}
+        >
+          Login
+        </button>
+        <button
+          onClick={() => setIsLoging(false)}
+          className="button-signup"
+          style={{ color: isLoging ? "" : "white" }}
+        >
+          Signup
+        </button>
+      </div>
     </div>
   );
 }
