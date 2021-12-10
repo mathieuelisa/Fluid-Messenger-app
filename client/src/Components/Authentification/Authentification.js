@@ -10,7 +10,7 @@ function Authentification() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoging, setIsLoging] = useState(true);
   const [showPassword, setShowPassword] = useState(true);
-  const [showVisibilityPassword, noShowVisibilityPassword] = useState(null);
+  const [showVisibilityPassword, setShowVisibilityPassword] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,15 +24,14 @@ function Authentification() {
 
   const passwordVisibility = () => {
     setShowPassword((showPassword) => !showPassword);
-    noShowVisibilityPassword(
+    setShowVisibilityPassword(
       (showVisibilityPassword) => !showVisibilityPassword
     );
   };
 
-  let pipo = false;
-
   return (
     <div className="auth__container">
+      <h1 className="auth__container-mainTitle">FLUID MESSENGER</h1>
       <form className="auth__container-form" onSubmit={handleSubmit}>
         <label className="auth__container-label">
           Username
@@ -61,6 +60,7 @@ function Authentification() {
               }
               className="auth__container-passwordVisibility"
               onClick={passwordVisibility}
+              alt="Visibilty password"
             />
           </div>
         </label>
@@ -83,6 +83,7 @@ function Authentification() {
                 }
                 className="auth__container-passwordVisibility"
                 onClick={passwordVisibility}
+                alt="Visibilty password"
               />
             </div>
           </label>

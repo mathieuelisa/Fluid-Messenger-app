@@ -7,10 +7,17 @@
   flex-direction: column;
 }
 
+.auth__container-mainTitle {
+  color: whitesmoke;
+  position: relative;
+  top: -70px;
+  font-family: verdana;
+}
+
 .auth__container-label {
   display: flex;
   flex-direction: column;
-  color: whitesmoke;
+  color: rgb(174, 174, 174);
   font-family: arial;
   margin-bottom: 10px;
   width: 300px;
