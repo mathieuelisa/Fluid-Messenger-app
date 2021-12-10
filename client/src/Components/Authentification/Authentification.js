@@ -1,11 +1,13 @@
 import { useState } from "react";
 import "./styles.css";
 
+import axios from "axios";
+
 import visibilityPassword from "../../Assets/witness.png";
 import noVisibilityPassword from "../../Assets/hidden.png";
 
 function Authentification() {
-  const [userName, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoging, setIsLoging] = useState(true);
@@ -17,9 +19,14 @@ function Authentification() {
 
     console.log("Form submitted");
 
-    console.log(userName);
-    console.log(password);
-    console.log(confirmPassword);
+    axios
+      .post("http://localhost:8000/signup", {
+        username,
+        password,
+      })
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   const passwordVisibility = () => {
@@ -37,9 +44,9 @@ function Authentification() {
           Username
           <input
             type="text"
-            value={userName}
+            value={username}
             className="auth__container-input"
-            onChange={(e) => setUserName(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </label>
 

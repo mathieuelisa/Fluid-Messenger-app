@@ -19,11 +19,12 @@ For adding the video just add a component and configure it.
 - Hooks
 - SDK getStream
 - Steam Chat
+- Axios
 
 ### BACK
 
 - Node
-- Express
+- Express JS
 - Bcrypt
 - Cors
 - Stream Chat
