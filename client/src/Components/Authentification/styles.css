@@ -76,4 +76,12 @@
 
 .auth__container-passwordVisibility {
   height: 20px;
+  cursor: pointer;
+}
+
+.auth__container-errorPasswordText {
+  font-size: 0.7em;
+  margin: 10px 0;
+  text-align: center;
+  color: rgb(172, 2, 2);
 }

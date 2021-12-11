@@ -1,5 +1,5 @@
-import { useState } from "react";
 import "./styles.css";
+import { useState } from "react";
 
 import axios from "axios";
 
@@ -12,12 +12,16 @@ function Authentification() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoging, setIsLoging] = useState(true);
   const [showPassword, setShowPassword] = useState(true);
+  const [error, setError] = useState(false);
   const [showVisibilityPassword, setShowVisibilityPassword] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     console.log("Form submitted");
+
+    if (password !== confirmPassword) {
+      setError(true);
+    }
 
     axios
       .post("http://localhost:8000/signup", {
@@ -93,6 +97,13 @@ function Authentification() {
                 alt="Visibilty password"
               />
             </div>
+            {error ? (
+              <p className="auth__container-errorPasswordText">
+                Your password and confirm password don't match
+              </p>
+            ) : (
+              ""
+            )}
           </label>
         )}
 
