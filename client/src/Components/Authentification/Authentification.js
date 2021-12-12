@@ -1,5 +1,6 @@
 import "./styles.css";
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 
 import axios from "axios";
 
@@ -14,6 +15,7 @@ function Authentification() {
   const [showPassword, setShowPassword] = useState(true);
   const [error, setError] = useState(false);
   const [showVisibilityPassword, setShowVisibilityPassword] = useState(null);
+  const [cookies, setCookie, removeCookie] = useCookies(["name"]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,7 +31,13 @@ function Authentification() {
         password,
       })
       .then((response) => {
+        setCookie("name", response.data.username);
+        setCookie("hashPassword", response.data.hashPassword);
+        setCookie("userId", response.data.userId);
+        setCookie("authtoken", response.data.myTokenId);
         console.log(response);
+
+        window.location.reload();
       });
   };
 

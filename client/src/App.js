@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useCookies } from "react-cookie";
+
 import { StreamChat } from "stream-chat";
 import { Chat, Channel, ChannelList } from "stream-chat-react";
 import "stream-chat-css/dist/css/index.css";
@@ -13,44 +15,39 @@ const sort = { last_message_at: -1 };
 const client = StreamChat.getInstance(process.env.REACT_APP_API_KEY);
 
 function App() {
-  const [clientReady, setClientReady] = useState(false);
+  const [cookies, setCookie, removeCookie] = useCookies(["name"]);
   const [channel, setChannel] = useState(null);
 
-  useEffect(() => {
-    // Users
-    const setupClient = async () => {
-      try {
-        await client.connectUser(
-          {
-            id: "dave-matthews",
-            name: "Dave Matthews",
-          },
-          process.env.REACT_APP_USER_TOKEN
-        );
+  // Users
+  const setupClient = async () => {
+    try {
+      await client.connectUser(
+        {
+          id: cookies.userId,
+          name: cookies.name,
+          hashPassword: cookies.hashPassword,
+        },
+        cookies.authtoken
+      );
 
-        // Channel
-        const channel = await client.channel("gaming", "gaming-chat", {
-          name: "Fluid messaging for privates messages",
-        });
-        setChannel(channel);
+      // Channel
+      const channel = await client.channel("gaming", "gaming-chat", {
+        name: "Fluid messaging for privates messages",
+      });
+      setChannel(channel);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-        setClientReady(true);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  if (cookies.authtoken) setupClient();
 
-    setupClient();
-  }, []);
-
-  if (!clientReady) return null;
-
-  let auth = false;
+  const auth = cookies.authtoken;
   return (
     <>
-      {!auth ? (
-        <Authentification />
-      ) : (
+      {!auth && <Authentification />}
+
+      {auth && (
         <Chat client={client} darkMode={true}>
           <ChannelList filters={filters} sort={sort} options={options} />
           <Channel channel={channel}>
