@@ -1,3 +1,4 @@
+import "./styles.css";
 import {
   ChannelHeader,
   MessageInput,
@@ -5,10 +6,18 @@ import {
   Thread,
   Window,
 } from "stream-chat-react";
+import { useCookies } from "react-cookie";
 
 function MessagesContainer() {
+  const [cookies, setCookie, removeCookie] = useCookies(["name"]);
+
   const logout = () => {
-    console.log("you're logout");
+    removeCookie("name", cookies.username);
+    removeCookie("hashPassword", cookies.hashPassword);
+    removeCookie("userId", cookies.userId);
+    removeCookie("authtoken", cookies.myTokenId);
+
+    window.location.reload();
   };
 
   return (
@@ -17,7 +26,9 @@ function MessagesContainer() {
         <ChannelHeader />
         <MessageList />
         <MessageInput />
-        <button onClick={logout}>Logout</button>
+        <button className="button-logout" onClick={logout}>
+          Logout
+        </button>
       </Window>
       <Thread />
     </>

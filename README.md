@@ -20,6 +20,7 @@ For adding the video just add a component and configure it.
 - SDK getStream
 - Steam Chat
 - Axios
+- Cookies
 
 ### BACK
 
@@ -28,6 +29,7 @@ For adding the video just add a component and configure it.
 - Bcrypt
 - Cors
 - Stream Chat
+- Uuid
 
 ### DEPLOYMENT
 

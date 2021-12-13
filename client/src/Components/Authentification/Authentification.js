@@ -17,29 +17,26 @@ function Authentification() {
   const [showVisibilityPassword, setShowVisibilityPassword] = useState(null);
   const [cookies, setCookie, removeCookie] = useCookies(["name"]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted");
-
-    if (password !== confirmPassword) {
+  const handleSubmit = async () => {
+    if (!isLoging && password !== confirmPassword) {
       setError(true);
+      return;
     }
 
-    axios
-      .post("http://localhost:8000/signup", {
+    const response = await axios
+      // .post(`http://localhost:8000/${endpoint}`, {
+      .post(`http://localhost:8000/signup`, {
         username,
         password,
-      })
-      .then((response) => {
-        //Attribut cookies with the response data
-        setCookie("name", response.data.username);
-        setCookie("hashPassword", response.data.hashPassword);
-        setCookie("userId", response.data.userId);
-        setCookie("authtoken", response.data.myTokenId);
-        console.log(response);
-
-        window.location.reload();
       });
+    //Attribut cookies with the response data
+    setCookie("name", response.data.username);
+    setCookie("hashPassword", response.data.hashPassword);
+    setCookie("userId", response.data.userId);
+    setCookie("authtoken", response.data.myTokenId);
+    console.log(response);
+
+    window.location.reload();
   };
 
   console.log(cookies);
