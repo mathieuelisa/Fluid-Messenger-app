@@ -1,6 +1,3 @@
-const express = require("express");
-const router = express.Router();
-
 const bcrypt = require("bcrypt");
 const { v1: uuidv1 } = require("uuid");
 const { connect } = require("getstream");
@@ -8,7 +5,7 @@ const StreamChat = require("stream-chat");
 
 require("dotenv").config();
 
-router.post("/signup", async (req, res) => {
+const signup = async (req, res) => {
   try {
     const { username, password } = req.body;
 
@@ -27,6 +24,6 @@ router.post("/signup", async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err });
   }
-});
+};
 
-module.exports = router;
+module.exports = { signup };
