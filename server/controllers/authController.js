@@ -16,11 +16,9 @@ const signup = async (req, res) => {
       process.env.API_SECRET,
       process.env.API_ID
     );
-    const myTokenId = client.createUserToken(userId);
+    const token = client.createUserToken(userId);
 
-    res
-      .status(200)
-      .json({ username, password, userId, hashPassword, myTokenId });
+    res.status(200).json({ username, password, userId, hashPassword, token });
   } catch (err) {
     res.status(500).json({ message: err });
   }
@@ -43,15 +41,22 @@ const login = async (req, res) => {
     if (!users.length)
       return res.status(400).json({ message: "User not found" });
 
-    const successful = await bcrypt.compare(password, users[0].hashPassword);
+    const success = await bcrypt.compare(password, users[0].hashPassword);
 
-    const myTokenId = client.createUserToken(users[0].id);
-    const idOfUser = users[0].id;
+    const token = client.createUserToken(users[0].id);
+    const userId = users[0].id;
     const nameOfUser = users[0].name;
+    const hashPassword = users[0].hashPassword;
 
-    if (successful) {
-      res.status(200).json({ username: nameOfUser, myTokenId, idOfUser });
+    if (success) {
+      res.status(200).json({
+        token,
+        username: nameOfUser,
+        userId,
+        hashPassword,
+      });
     } else {
+      console.log("Error password");
       res.status(500).json({ message: "Wrong password" });
     }
   } catch (error) {

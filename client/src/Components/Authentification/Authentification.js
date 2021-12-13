@@ -17,29 +17,30 @@ function Authentification() {
   const [showVisibilityPassword, setShowVisibilityPassword] = useState(null);
   const [cookies, setCookie, removeCookie] = useCookies(["name"]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Submitted");
     if (!isLoging && password !== confirmPassword) {
       setError(true);
       return;
     }
 
-    const response = await axios
-      // .post(`http://localhost:8000/${endpoint}`, {
-      .post(`http://localhost:8000/signup`, {
+    const response = await axios.post(
+      `http://localhost:8000/${isLoging ? "login" : "signup"}`,
+      {
         username,
         password,
-      });
+      }
+    );
     //Attribut cookies with the response data
     setCookie("name", response.data.username);
     setCookie("hashPassword", response.data.hashPassword);
     setCookie("userId", response.data.userId);
-    setCookie("authtoken", response.data.myTokenId);
+    setCookie("authtoken", response.data.token);
     console.log(response);
 
     window.location.reload();
   };
-
-  console.log(cookies);
 
   const passwordVisibility = () => {
     setShowPassword((showPassword) => !showPassword);

@@ -15,7 +15,7 @@ function MessagesContainer() {
     removeCookie("name", cookies.username);
     removeCookie("hashPassword", cookies.hashPassword);
     removeCookie("userId", cookies.userId);
-    removeCookie("authtoken", cookies.myTokenId);
+    removeCookie("authtoken", cookies.token);
 
     window.location.reload();
   };
