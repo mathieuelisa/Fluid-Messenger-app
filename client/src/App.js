@@ -1,16 +1,13 @@
+import "./app.css";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
-
+// Stream dependencies
 import { StreamChat } from "stream-chat";
 import { Chat, Channel, ChannelList } from "stream-chat-react";
 import "stream-chat-css/dist/css/index.css";
-import "./app.css";
+
 import Authentification from "./Components/Authentification/Authentification";
 import MessagesContainer from "./Components/MessagesContainer/MessagesContainer";
-
-const filters = { type: "messaging" };
-const options = { state: true, presence: true, limit: 10 };
-const sort = { last_message_at: -1 };
 
 const client = StreamChat.getInstance(process.env.REACT_APP_API_KEY);
 
@@ -49,7 +46,7 @@ function App() {
 
       {auth && (
         <Chat client={client} darkMode={true}>
-          <ChannelList filters={filters} sort={sort} options={options} />
+          <ChannelList />
           <Channel channel={channel}>
             <MessagesContainer />
           </Channel>

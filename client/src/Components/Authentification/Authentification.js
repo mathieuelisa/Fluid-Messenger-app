@@ -31,6 +31,7 @@ function Authentification() {
         password,
       })
       .then((response) => {
+        //Attribut cookies with the response data
         setCookie("name", response.data.username);
         setCookie("hashPassword", response.data.hashPassword);
         setCookie("userId", response.data.userId);
@@ -40,6 +41,8 @@ function Authentification() {
         window.location.reload();
       });
   };
+
+  console.log(cookies);
 
   const passwordVisibility = () => {
     setShowPassword((showPassword) => !showPassword);
