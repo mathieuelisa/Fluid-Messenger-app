@@ -19,7 +19,7 @@ function Authentification() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitted");
+
     if (!isLoging && password !== confirmPassword) {
       setError(true);
       return;

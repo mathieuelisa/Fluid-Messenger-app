@@ -7,8 +7,9 @@ import {
   Window,
 } from "stream-chat-react";
 import { useCookies } from "react-cookie";
+import ListingOfUsers from "../ListingofUsers/ListingOfUsers.js";
 
-function MessagesContainer() {
+function MessagesContainer({ users }) {
   const [cookies, setCookie, removeCookie] = useCookies(["name"]);
 
   const logout = () => {
@@ -29,6 +30,7 @@ function MessagesContainer() {
         <button className="button-logout" onClick={logout}>
           Logout
         </button>
+        <ListingOfUsers users={users} />
       </Window>
       <Thread />
     </>

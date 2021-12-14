@@ -1,5 +1,5 @@
 import "./app.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 // Stream dependencies
 import { StreamChat } from "stream-chat";
@@ -14,8 +14,17 @@ const client = StreamChat.getInstance(process.env.REACT_APP_API_KEY);
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies(["name"]);
   const [channel, setChannel] = useState(null);
+  const [users, setAllUsers] = useState(null);
 
-  // Users
+  useEffect(async () => {
+    // Get all the informations about users connected..
+    if (cookies.authtoken) {
+      const { users } = await client.queryUsers({ role: "user" });
+      setAllUsers(users);
+    }
+  }, []);
+
+  // Users setup
   const setupClient = async () => {
     try {
       await client.connectUser(
@@ -27,7 +36,7 @@ function App() {
         cookies.authtoken
       );
 
-      // Channel
+      // Channel setup
       const channel = await client.channel("gaming", "gaming-chat", {
         name: "Fluid messaging for privates messages",
       });
@@ -48,7 +57,7 @@ function App() {
         <Chat client={client} darkMode={true}>
           <ChannelList />
           <Channel channel={channel}>
-            <MessagesContainer />
+            <MessagesContainer users={users} />
           </Channel>
         </Chat>
       )}
