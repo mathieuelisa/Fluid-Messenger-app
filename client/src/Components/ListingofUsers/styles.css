@@ -1,0 +1,17 @@
+.user-title {
+  cursor: pointer;
+  text-align: center;
+}
+
+.user-title:hover {
+  color: grey;
+}
+
+.users {
+  text-align: center;
+}
+
+.users-wrapper {
+  display: flex;
+  justify-content: center;
+}
