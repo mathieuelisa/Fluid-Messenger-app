@@ -1,4 +1,5 @@
 import "./styles.css";
+import logo from "../../Assets/logo.png";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 
@@ -51,8 +52,8 @@ function Authentification() {
 
   return (
     <div className="auth__container">
-      <img src="" />
-      <h1 className="auth__container-mainTitle">FLUID MESSENGER</h1>
+      <img className="auth__container-logo" src={logo} />
+      <h1 className="auth__container-mainTitle">Fluid messenger</h1>
       <form className="auth__container-form" onSubmit={handleSubmit}>
         <label className="auth__container-label">
           Username
