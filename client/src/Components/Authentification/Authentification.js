@@ -51,6 +51,7 @@ function Authentification() {
 
   return (
     <div className="auth__container">
+      <img src="" />
       <h1 className="auth__container-mainTitle">FLUID MESSENGER</h1>
       <form className="auth__container-form" onSubmit={handleSubmit}>
         <label className="auth__container-label">

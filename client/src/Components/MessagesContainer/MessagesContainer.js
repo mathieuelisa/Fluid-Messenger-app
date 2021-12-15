@@ -24,11 +24,11 @@ function MessagesContainer({ users }) {
   return (
     <>
       <Window>
-        <ChannelHeader />
+        <ChannelHeader live={true} title={"Private message"} />
         <MessageList />
         <MessageInput />
         <button className="button-logout" onClick={logout}>
-          Logout
+          LOGOUT
         </button>
         <ListingOfUsers users={users} />
       </Window>

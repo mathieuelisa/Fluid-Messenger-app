@@ -2,3 +2,19 @@
   cursor: pointer;
   height: 40px;
 }
+
+.str-chat-channel.messaging .str-chat__main-panel {
+  padding: var(--sm-p) var(--xs-p) var(--sm-p) var(--xs-p);
+}
+
+.messaging.str-chat .str-chat__header-livestream {
+  background: #6a2d7d;
+}
+
+.str-chat__avatar-fallback {
+  background: #6a2d7d;
+}
+
+.messaging.str-chat .str-chat__list {
+  background: #1f1423;
+}

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 // Stream dependencies
 import { StreamChat } from "stream-chat";
-import { Chat, Channel, ChannelList } from "stream-chat-react";
+import { Chat, Channel } from "stream-chat-react";
 import "stream-chat-css/dist/css/index.css";
 
 import Authentification from "./Components/Authentification/Authentification";
@@ -38,7 +38,7 @@ function App() {
 
       // Channel setup
       const channel = await client.channel("gaming", "gaming-chat", {
-        name: "Fluid messaging for privates messages",
+        name: "PRIVATE CHANNEL",
       });
       setChannel(channel);
     } catch (error) {
@@ -55,7 +55,6 @@ function App() {
 
       {auth && (
         <Chat client={client} darkMode={true}>
-          <ChannelList />
           <Channel channel={channel}>
             <MessagesContainer users={users} />
           </Channel>
