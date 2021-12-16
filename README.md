@@ -38,28 +38,42 @@ For adding the video just add a component and configure it.
 
 ## HOW TO USE THIS APP ?
 
-1. In first time clone this project
+With this application you will be able to chat, share videos and conversations with as many people as possible online.<br> The number of online participants will be indicated, as well as the number of counts created on this application.
+
+### HOW TO USE IT IF YOU WANT TO CLONE THE PROJECT
+
+1. In first time clone the project
 
 ```bash
 git clone <url of the repo>
 ```
 
-2. Install the dependencies for the Front and the Back
+2. Install all the dependencies for the Front and for the Back
 
 ```bash
 yarn install & npm install
 ```
 
-3. Check `.env_example` in the client and server folders to get the variable of the `.env` key
+3. Check `.env_example` in the client and server folders to get all the variable of the `.env` key
 
-4. Start the Front with
+4. Start the Front with :
 
 ```bash
 yarn start
 ```
 
-5. Start the Back with
+5. Start the Back with :
 
 ```bash
 npm run start:backend
 ```
+
+# Licence
+
+Copyright (c) 2021 Mathieu ELISA
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+\*Translation: Ofcourse you can use this for you project! Just make sure to say where you got this from.

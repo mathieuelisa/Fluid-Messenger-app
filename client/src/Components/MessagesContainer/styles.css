@@ -18,3 +18,8 @@
 .messaging.str-chat .str-chat__list {
   background: #1f1423;
 }
+
+.str-chat__reaction-selector {
+  background: #6a2d7d;
+  background-image: none;
+}

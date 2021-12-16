@@ -1,11 +1,11 @@
 @font-face {
   font-family: "Briquete";
-  src: url("../../Assets/Briquete.otf");
+  src: url("../../Assets/Fonts/Briquete.otf");
 }
 
 @font-face {
   font-family: "CaviarDreams";
-  src: url("../../Assets/CaviarDreams.ttf");
+  src: url("../../Assets/Fonts/CaviarDreams.ttf");
 }
 
 p,
