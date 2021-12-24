@@ -26,8 +26,16 @@ function Authentification() {
       return;
     }
 
+    // const response = await axios.post(
+    //   `http://localhost:8000/${isLoging ? "login" : "signup"}`,
+    //   {
+    //     username,
+    //     password,
+    //   }
+    // );
+
     const response = await axios.post(
-      `http://localhost:8000/${isLoging ? "login" : "signup"}`,
+      `https://fluid-messenger.herokuapp.com/${isLoging ? "login" : "signup"}`,
       {
         username,
         password,
