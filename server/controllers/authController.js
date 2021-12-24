@@ -24,7 +24,7 @@ const signup = async (req, res) => {
 
     res.status(200).json({ username, password, userId, hashPassword, token });
   } catch (err) {
-    res.status(500).json({ message: err });
+    res.status(500).json({ message: "Erreuur" });
   }
 };
 
@@ -65,7 +65,7 @@ const login = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: error });
+    res.status(500).json({ message: "Erreuur" });
   }
 };
 

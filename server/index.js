@@ -10,13 +10,14 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Fluid messenger application !!");
-});
+// app.get("/auth", (req, res) => {
+//   res.send("Fluid messenger application !!");
+// });
 
 //Auth Routes
 app.use("/auth", authRoutes);
+
 //server running on 8000 port
 app.listen(PORT, () => {
-  console.log(`Your server runnong on PORT: ${PORT}`);
+  console.log(`Your server running on PORT: ${PORT}`);
 });

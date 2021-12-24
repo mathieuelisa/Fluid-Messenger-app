@@ -27,7 +27,7 @@ function Authentification() {
     }
 
     // const response = await axios.post(
-    //   `http://localhost:8000/${isLoging ? "login" : "signup"}`,
+    //   `http://localhost:8000/auth/${isLoging ? "login" : "signup"}`,
     //   {
     //     username,
     //     password,
