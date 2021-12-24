@@ -35,12 +35,15 @@ function Authentification() {
     // );
 
     const response = await axios.post(
-      `https://fluid-messenger.herokuapp.com/${isLoging ? "login" : "signup"}`,
+      `https://fluid-messenger.herokuapp.com/auth/${
+        isLoging ? "login" : "signup"
+      }`,
       {
         username,
         password,
       }
     );
+
     //Attribut cookies with the response data
     setCookie("name", response.data.username);
     setCookie("hashPassword", response.data.hashPassword);
