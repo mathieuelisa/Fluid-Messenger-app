@@ -5,6 +5,10 @@ const StreamChat = require("stream-chat").StreamChat;
 
 require("dotenv").config();
 
+const test = (req, res) => {
+  res.send("test");
+};
+
 const signup = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -65,4 +69,4 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { signup, login };
+module.exports = { signup, login, test };
